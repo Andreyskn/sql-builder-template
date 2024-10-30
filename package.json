@@ -2,13 +2,13 @@
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
-		"compile": "bun run src/index.ts"
+		"dev": "bun run src/index.ts"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
 		"typescript": "^5.0.0"
 	},
 	"dependencies": {
-		"@andreyskn/sql-builder": "^0.1.0"
+		"@andreyskn/sql-builder": "^1.0.0"
 	}
 }

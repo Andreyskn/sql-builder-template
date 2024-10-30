@@ -1,20 +1,34 @@
-import { init, type Configuration } from '@andreyskn/sql-builder';
+import { Compiler, type Configuration } from '@andreyskn/sql-builder';
 
 const cfg: Configuration = {
-	schemaOutPath: './schema.sql',
-	queryOutPath: './query.sql',
+	schemaOutPath: 'schema.sql',
+	queryOutPath: 'query.sql',
 	dialect: 'SQLite',
+	noEmit: true, // output to the console only
 };
 
-const { compile, db } = init<Schema>(cfg);
+const { compile, db } = new Compiler<Schema>(cfg);
 
 type Schema = {
-	table: Table;
+	example_table: Table;
 };
 
-type Table = {};
+type Table = {
+	example_column: string;
+};
 
 compile({
-	schema: [],
-	query: [],
+	schema: [
+		{
+			annotation: 'example annotation',
+			builder: db.schema
+				.createTable('example_table')
+				.addColumn('example_column', 'text'),
+		},
+	],
+	query: [
+		{
+			builder: db.selectFrom('example_table').selectAll(),
+		},
+	],
 });
