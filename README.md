@@ -1,13 +1,5 @@
-# .
-
-To install dependencies:
+To create a project from template:
 
 ```bash
-bun install
-```
-
-To run:
-
-```bash
-bun dev
+bun create Andreyskn/sql-builder-template --no-git <directory-name>
 ```
